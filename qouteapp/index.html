@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUOTE APP</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .quote-sec{
+           /* background-color: blue; */
+           text-align: center;
+           justify-content: center;
+           height: 100vh;
+        }
+        .quote-main-cntr {
+            /* background-color: green; */
+            height: 500px;
+            width: 500px;
+            margin: 100px auto;
+            /* border-radius: 5px 5px ; */
+        }
+        .quote-content-cntr {
+            /* background-color: #a1d1b1; */
+            background-color: #134b42;
+            height: 300px;
+            width: 460px;
+            padding: 20px;
+            text-align: center;
+            justify-content: center;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .quote-line-div {
+            /* background-color: pink; */
+            height: 270px;
+            
+        }
+        .quotelines {
+            padding: 90px 0px;
+        }
+        .p {
+            font-size: 20px;
+            color: #ffffff;
+        }
+        .p-quote  {
+            font-family:  Georgia, Times;
+        }
+        .p-auther {
+            text-transform: capitalize;
+            font-size: 20px;
+        }
+        .quote-btn-cntr {
+            /* background-color: pink; */
+            padding: 20px;
+        }
+        .quote-btn {
+            width: 200px;
+            padding: 20px;
+            border-radius: 10px;
+            border: none;
+            color: #ffffff;
+            /* background-color: #575757; */
+            background-color: #990302;
+        }
+        .btn {
+            font-size: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <sec class="quote-sec">
+        <div class="quote-main-cntr">
+            <div class="quote-content-cntr">
+                <div class="quote-line-div">
+                   <div class="quotelines">
+                    <p class="p p-quote quote"> " Two things are infinite: the universe and human stupidity; and I'm not sure about the universe. "</p>
+                </div>
+                   </div>
+                <div class="quote-authername-div">
+                    <p class="p p-auther ">~ <i class="quote-auther">Ejaz Khan / developer</i> ~</p>
+                </div>
+            </div>
+            <div class="quote-btn-cntr">
+                <div class="back-quote-btn-div">
+                    <button class="quote-btn btn">New QUOTE</button>
+                </div>
+                <!-- <div class="next-quote-btn-div">
+                    <button class="quote-btn">Next QUOTE</button>
+                </div> -->
+            </div>
+        </div>
+    </sec>
+</body>
+<script>
+    let quote =document.querySelector('.quote');
+    let auther =document.querySelector('.quote-auther');
+    let btn =document.querySelector('.btn');
+
+    const getQuote =function() {
+        fetch('https://dummyjson.com/quotes/random')
+        .then(res => res.json())
+        .then(q=> {
+            quote.textContent = ('" ')+q.quote+(' "');
+            auther.textContent = q.author;
+        })
+
+    }
+
+    btn.addEventListener('click',getQuote);
+</script>
+</html>
